@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       repos: []
     }
-
+    this.getUpdate = this.getUpdate.bind(this)
   }
 
   search (term) {
@@ -20,10 +20,7 @@ class App extends React.Component {
       url: '/repos',
       data: {'username': term},
       success: (data) => {
-      console.log('Data is ', data),
-      this.setState({
-        repos: [...this.state.repos, ...data]
-      })},
+      console.log('Data is ', data)},
       error: () => console.log('Yo this search did not work')
     })
     console.log(`${term} was searched`);
@@ -35,13 +32,16 @@ class App extends React.Component {
       method: 'get',
       url: '/repos',
       success: (data) => {
-      console.log('Data is ', data)},
+      console.log('Data is ', data)
+      this.setState({
+        repos: [...this.state.repos, ...data]
+      })},
       error: (error) => console.log('Yo this get did not work', error)
     })
   }
 
   componentDidMount() {
-    console.log(this.state)
+    this.getUpdate()
   }
 
   render () {

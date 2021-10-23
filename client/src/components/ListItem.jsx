@@ -7,7 +7,7 @@ const ListItem = (props) => (
       <br />
       URL: {props.url}
       <br />
-      WATCHES: {props.watcher}
+      WATCHES: {props.watchers ? props.watchers: 0}
     </p>
   </li>
 )

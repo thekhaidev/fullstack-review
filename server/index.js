@@ -18,7 +18,7 @@ app.post('/repos', function (req, res) {
   let query = req.body.username
   github.getReposByUsername(query, (data) => {
 
-
+    console.log(data)
     data.forEach((repo) => {
       // pull our relevant data from object
       let storage = {name: repo.name, url: repo.url, watchers: repo.watchers};
