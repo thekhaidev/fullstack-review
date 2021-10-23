@@ -19,12 +19,19 @@ class App extends React.Component {
       method: 'post',
       url: '/repos',
       data: {'username': term},
-      success: () => console.log('Yo this search worked'),
+      success: (data) => {
+      console.log('Data is ', data),
+      this.setState({
+        repos: data
+      })},
       error: () => console.log('Yo this search did not work')
     })
-
     console.log(`${term} was searched`);
 
+  }
+
+  componentDidMount() {
+    console.log(this.state)
   }
 
   render () {

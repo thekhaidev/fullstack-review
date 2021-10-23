@@ -6,17 +6,18 @@ const github = require('../helpers/github.js')
 app.use(bodyParser())
 app.use(express.static(__dirname + '/../client/dist'));
 
+var sendBack = []
+
 app.post('/repos', function (req, res) {
   // TODO - your code here!
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
-  console.log('That username be', req.body.username)
+  console.log('That username is', req.body.username)
   let query = req.body.username
-  github.getReposByUsername(query, (data) =>
-  console.log('Something happened??'))
-
-  res.status(200).send('cool beans kid, this post request worked')
+  github.getReposByUsername(query, (data) =>{
+  res.status(200).send(data)
+  console.log(data)})
 });
 
 app.get('/repos', function (req, res) {

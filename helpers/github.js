@@ -20,8 +20,9 @@ let getReposByUsername = (term, callback) => {
   .then(res => {
     data = res.data.map(repo => {
       let data = {name: repo.name, url: repo['html_url']};
-      return data;
+     return data;
     })
+      callback(data)
       console.log('This that data dawg', data);
       console.log('You got that thang from github dawg');
    })
