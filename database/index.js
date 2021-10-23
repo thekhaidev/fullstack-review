@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect('mongodb://localhost/fetcher',  { useNewUrlParser: true, useUnifiedTopology: true  });
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
-  name: String,
+  name: {
+    type: String,
+    unique: true},
   url: String
 });
 
