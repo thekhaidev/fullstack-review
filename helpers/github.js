@@ -5,7 +5,7 @@ let getReposByUsername = (term, callback) => {
 
 
   let options = {
-    url: `https://api.github.com/${term}/repos}`,
+    url: `https://api.github.com/users/${term}/repos`,
     headers: {
       'User-Agent': 'request',
       'Authorization': `token ${config.TOKEN}`
@@ -22,7 +22,7 @@ let getReposByUsername = (term, callback) => {
       let data = {name: repo.name, url: repo['html_url']};
       return data;
     })
-      console.log(data);
+      console.log('This that data dawg', data);
       console.log('You got that thang from github dawg');
    })
    .catch(err => console.log('You did not get that thang from github ', err));
