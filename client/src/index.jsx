@@ -22,7 +22,7 @@ class App extends React.Component {
       success: (data) => {
       console.log('Data is ', data),
       this.setState({
-        repos: data
+        repos: [...this.state.repos, ...data]
       })},
       error: () => console.log('Yo this search did not work')
     })
