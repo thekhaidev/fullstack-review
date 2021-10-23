@@ -20,10 +20,12 @@ class App extends React.Component {
       url: '/repos',
       data: {'username': term},
       success: (data) => {
-      console.log('Data is ', data)},
+      console.log('Data is ', data)
+      this.getUpdate()},
       error: () => console.log('Yo this search did not work')
     })
     console.log(`${term} was searched`);
+
 
   }
 
