@@ -6,7 +6,8 @@ let repoSchema = mongoose.Schema({
   name: {
     type: String,
     unique: true},
-  url: String
+  url: String,
+  watchers: Number
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
@@ -19,7 +20,8 @@ let save = (repo) => {
 
   let newRepo = new Repo({
   	name: repo.name,
-  	url: repo.url
+  	url: repo.url,
+    watchers: repo.watchers
   }).save((err, data) => {
   	if (err) {
   		console.log('Gonna be a no from me dawg: ', err);
@@ -28,6 +30,19 @@ let save = (repo) => {
   	}
   });
 
+}
+
+let filter = (callback) => {
+  Repo.find({}).sort('-watchers')
+  .then((result => {
+    let repoList = result.map((dat) => {
+      return {name: dat._doc.name, url: dat._doc.url, score: dat._doc.score};
+    });
+    console.log('find and sort complete');
+    console.log(`List of repos ${repoList}`);
+
+    callback(repoList);
+  }))
 }
 
 module.exports.save = save;

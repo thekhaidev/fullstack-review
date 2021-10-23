@@ -19,7 +19,7 @@ let getReposByUsername = (term, callback) => {
   })
   .then(res => {
     data = res.data.map(repo => {
-      let data = {name: repo.name, url: repo['html_url']};
+      let data = {name: repo.name, url: repo['html_url'], watchers: repo.watchers};
      return data;
     })
       callback(data)

@@ -21,7 +21,7 @@ app.post('/repos', function (req, res) {
 
     data.forEach((repo) => {
       // pull our relevant data from object
-      let storage = {name: repo.name, url: repo.url};
+      let storage = {name: repo.name, url: repo.url, watchers: repo.watchers};
       // store data in database
       addToDb.save(storage);
 
@@ -30,6 +30,7 @@ app.post('/repos', function (req, res) {
     res.status(200).send(data)
     console.log(data)
   })
+
 });
 
 app.get('/repos', function (req, res) {
