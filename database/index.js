@@ -46,3 +46,4 @@ let filter = (callback) => {
 }
 
 module.exports.save = save;
+module.exports.filter = filter;

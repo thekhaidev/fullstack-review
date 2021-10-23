@@ -30,6 +30,16 @@ class App extends React.Component {
 
   }
 
+  getUpdate() {
+    $.ajax({
+      method: 'get',
+      url: '/repos',
+      success: (data) => {
+      console.log('Data is ', data)},
+      error: (error) => console.log('Yo this get did not work', error)
+    })
+  }
+
   componentDidMount() {
     console.log(this.state)
   }
