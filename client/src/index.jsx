@@ -35,8 +35,10 @@ class App extends React.Component {
       url: '/repos',
       success: (data) => {
       console.log('Data is ', data)
+      let newRepos =[...this.state.repos, ...data]
+      let uniqueRepos = [...new Set(newRepos)]
       this.setState({
-        repos: [...this.state.repos, ...data]
+        repos: uniqueRepos
       })},
       error: (error) => console.log('Yo this get did not work', error)
     })

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher',  { useNewUrlParser: true, useUnifiedTopology: true  });
+mongoose.connect('mongodb://localhost/fetcher',  { useNewUrlParser: true, useUnifiedTopology: true, autoIndex: true});
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
