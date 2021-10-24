@@ -47,10 +47,10 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div>
+    return (<div className="nes-container">
       <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos}/>
       <Search onSearch={this.search.bind(this)}/>
+      <RepoList repos={this.state.repos}/>
     </div>)
   }
 }
