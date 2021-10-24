@@ -36,10 +36,10 @@ let filter = (callback) => {
   Repo.find({}).sort('-watchers')
   .then((result => {
     let repoList = result.map((dat) => {
-      return {name: dat._doc.name, url: dat._doc.url, watchers: dat._doc.watchers};
+      return {name: dat._doc.name, url: dat._doc.url, score: dat._doc.score};
     });
-    console.log('This sorted my guy');
-    console.log(`Le repos ${repoList}`);
+    console.log('find and sort complete');
+    console.log(`List of repos ${repoList}`);
 
     callback(repoList);
   }))
